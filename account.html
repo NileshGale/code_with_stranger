@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code with Stranger - Login & Signup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="style/account.css">
+</head>
+<body>
+    <div class="auth-wrapper">
+        <!-- Login Panel -->
+        <div class="auth-panel active" id="loginPanel">
+            <a href="code-with-stranger-home.html"><i class="fa-solid fa-arrow-left back-arrow"></i></a> 
+            <h2>Login</h2>
+            <div id="loginAlert"></div>
+            <form id="loginForm" class="form">
+                <div class="field-wrapper">
+                    <input type="text" id="loginIdentifier" autocomplete="off" required>
+                    <label>Mobile number or Email</label>
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="field-wrapper">
+                    <input type="password" id="loginPassword" autocomplete="off" required>
+                    <label>Password</label>
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <button class="submit-button" type="submit">Login</button>
+                <div class="switch-link">
+                    <p>Don't have an account? <a id="goToRegister">Sign Up</a></p>
+                </div>
+                <div class="switch-link">
+                    <p>Can't remember password? <a id="goToForgot">Reset It</a></p>
+                </div>
+            </form>
+        </div>
+
+        <!-- Register Panel -->
+        <div class="auth-panel" id="registerPanel">
+            <i class="fa-solid fa-arrow-left back-arrow" id="goToLogin"></i>
+            <h2>Register</h2>
+            <div id="registerAlert">
+            <form id="registerForm" class="form">
+                <div class="field-wrapper">
+                    <input type="text" id="registerMobile" required pattern="[0-9]{10}" autocomplete="off">
+                    <label>Mobile number</label>
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="field-wrapper">
+                    <input type="email" id="registerEmail" required autocomplete="off">
+                    <label>Email</label>
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="field-wrapper">
+                    <input type="password" id="registerPassword" required minlength="6">
+                    <label>Password</label>
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <button class="submit-button" type="submit">Send OTP</button>
+                <div class="switch-link">
+                    <p>Already have an account? <a id="goToLoginFromSignup">Sign In</a></p>
+                </div>
+            </form>
+            </div>
+        </div>
+
+        <!-- OTP Verification Panel -->
+        <div class="auth-panel" id="otpPanel">
+            <i class="fa-solid fa-arrow-left back-arrow" id="backToRegister"></i>
+            <h2>Verify OTP</h2>
+            <p style="color: #fff; text-align: center; margin-bottom: 20px; font-size: 14px;">
+                Enter the 6-digit code sent to your email
+            </p>
+            <div id="otpAlert"></div>
+            <div class="otp-container">
+                <input type="text" class="otp-input" maxlength="1" data-index="0" autocomplete="off">
+                <input type="text" class="otp-input" maxlength="1" data-index="1" autocomplete="off">
+                <input type="text" class="otp-input" maxlength="1" data-index="2" autocomplete="off">
+                <input type="text" class="otp-input" maxlength="1" data-index="3" autocomplete="off">
+                <input type="text" class="otp-input" maxlength="1" data-index="4" autocomplete="off">
+                <input type="text" class="otp-input" maxlength="1" data-index="5" autocomplete="off">
+            </div>
+            <div class="resend-container">
+                <span>Didn't receive code? </span>
+                <span class="resend-btn disabled" id="resendBtn">Resend in <span id="timer">60</span>s</span>
+            </div>
+            <button class="submit-button" id="verifyOtpBtn">Verify & Register</button>
+        </div>
+
+        <!-- Forgot Password Panel -->
+        <div class="auth-panel" id="forgotPanel">
+            <i class="fa-solid fa-arrow-left back-arrow" id="backToLogin"></i>
+            <h2>Reset Password</h2>
+            <div id="forgotAlert"></div>
+            <form id="forgotForm" class="form">
+                <div class="field-wrapper">
+                    <input type="text" id="forgotIdentifier" required autocomplete="off">
+                    <label>Email or Mobile number</label>
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <button class="submit-button" type="submit">Send OTP</button>
+                <div class="switch-link">
+                    <p>Back to <a id="goToLoginFromForgot">Login</a></p>
+                </div>
+            </form>
+        </div>
+
+        <!-- Reset OTP Verification Panel -->
+        <div class="auth-panel" id="resetOtpPanel">
+            <i class="fa-solid fa-arrow-left back-arrow" id="backToForgot"></i>
+            <h2>Verify OTP</h2>
+            <p style="color: #fff; text-align: center; margin-bottom: 20px; font-size: 14px;">
+                Enter the 6-digit code sent to you
+            </p>
+            <div id="resetOtpAlert"></div>
+            <div class="otp-container" id="resetOtpContainer">
+                <input type="text" class="otp-input reset-otp" maxlength="1" data-index="0" autocomplete="off">
+                <input type="text" class="otp-input reset-otp" maxlength="1" data-index="1" autocomplete="off">
+                <input type="text" class="otp-input reset-otp" maxlength="1" data-index="2" autocomplete="off">
+                <input type="text" class="otp-input reset-otp" maxlength="1" data-index="3" autocomplete="off">
+                <input type="text" class="otp-input reset-otp" maxlength="1" data-index="4" autocomplete="off">
+                <input type="text" class="otp-input reset-otp" maxlength="1" data-index="5" autocomplete="off">
+            </div>
+            <div class="resend-container">
+                <span>Didn't receive code? </span>
+                <span class="resend-btn disabled" id="resendResetBtn">Resend in <span id="resetTimer">60</span>s</span>
+            </div>
+            <button class="submit-button" id="verifyResetOtpBtn">Verify OTP</button>
+        </div>
+
+        <!-- New Password Panel -->
+        <div class="auth-panel" id="newPasswordPanel">
+            <h2>Create New Password</h2>
+            <div id="newPasswordAlert"></div>
+            <form id="newPasswordForm" class="form">
+                <div class="field-wrapper">
+                    <input type="password" id="newPassword" required minlength="6" autocomplete="off">
+                    <label>New Password</label>
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <div class="field-wrapper">
+                    <input type="password" id="confirmPassword" required minlength="6" autocomplete="off">
+                    <label>Confirm Password</label>
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <button class="submit-button" type="submit">Reset Password</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Follow us ❤️ <a href="https://www.instagram.com/strang3r2616?igsh=MWtxbnk4a3JwY2xnMg==" target="_blank">Stranger</a> </p>
+    </div>
+
+    <script src="script/account.js"></script>
+</body>
+</html>

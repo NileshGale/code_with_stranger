@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code with Stranger</title>
+    <link rel="stylesheet" href="style/home.css">
+    <link rel="icon" type="image/x-icon" href="web_icon.jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="code-with-stranger-home.html" class="logo">
+            <img src="web_icon.jpeg" alt="">
+            Code with Stranger
+        </a>
+        
+        <div class="nav-links">
+            <a onclick="showHome()">Home</a>
+            <a onclick="openFeedbackModal()">Feedback</a>
+            <a href="account.html">
+            <button class="logout-btn" onclick="logout()">
+                <i class="fa fa-user" aria-hidden="true"></i> Account
+            </button>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Master Coding Skills</h1>
+        <p>Choose your language, select difficulty level, and solve challenging programming questions</p>
+    </section>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Language Selection Section -->
+        <section id="languageSection">
+            <h2 class="section-title">Select Programming Language</h2>
+            <div class="language-grid">
+                <div class="language-card" onclick="selectLanguage('Python', 1)">
+                    <i class="fa-brands fa-python"></i>
+                    <h3>Python</h3>
+                    <p>Popular & Versatile</p>
+                </div>
+                <div class="language-card" onclick="selectLanguage('JavaScript', 2)">
+                    <i class="fa-brands fa-js"></i>
+                    <h3>JavaScript</h3>
+                    <p>Web Development</p>
+                </div>
+                <div class="language-card" onclick="selectLanguage('Java', 3)">
+                    <i class="fa-brands fa-java"></i>
+                    <h3>Java</h3>
+                    <p>Enterprise Solutions</p>
+                </div>
+                <div class="language-card" onclick="selectLanguage('C Programming', 4)">
+                    <i class="fa-solid fa-code"></i>
+                    <h3>C Programming</h3>
+                    <p>System Programming</p>
+                </div>
+                <div class="language-card" onclick="selectLanguage('PHP', 5)">
+                    <i class="fa-brands fa-php"></i>
+                    <h3>PHP</h3>
+                    <p>Server-Side Scripting</p>
+                </div>
+                <div class="language-card" onclick="selectLanguage('SQL', 6)">
+                    <i class="fa-solid fa-database"></i>
+                    <h3>SQL</h3>
+                    <p>Database Management</p>
+                </div>
+                <div class="language-card" onclick="selectLanguage('HTML/CSS', 7)">
+                    <i class="fa-brands fa-html5"></i>
+                    <h3>HTML/CSS</h3>
+                    <p>Web Design</p>
+                </div>
+                <div class="language-card" onclick="selectLanguage('RUST', 8)">
+                    <i class="fa-brands fa-rust"></i>
+                    <h3>RUST</h3>
+                    <p>build reliable software</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Difficulty Selection Section -->
+        <section id="difficultySection" class="difficulty-section">
+            <button class="back-btn" onclick="backToLanguages()">
+                <i class="fa-solid fa-arrow-left"></i> Back to Languages
+            </button>
+            <h2 class="section-title" id="selectedLanguageTitle"></h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card basic" onclick="selectDifficulty('basic')">
+                    <i class="fa-solid fa-seedling"></i>
+                    <h3>Basic</h3>
+                    <p>Perfect for beginners</p>
+                    <p>100+ Questions</p>
+                </div>
+                <div class="difficulty-card intermediate" onclick="selectDifficulty('intermediate')">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <h3>Intermediate</h3>
+                    <p>For growing developers</p>
+                    <p>120+ Questions</p>
+                </div>
+                <div class="difficulty-card advanced" onclick="selectDifficulty('advanced')">
+                    <i class="fa-solid fa-fire"></i>
+                    <h3>Advanced</h3>
+                    <p>Challenge yourself</p>
+                    <p>150+ Questions</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div class="modal" id="feedbackModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeFeedbackModal()">&times;</span>
+            <h2>Send Feedback</h2>
+            <form id="feedbackForm">
+                <input type="text" id="feedbackName" placeholder="Your Name" required>
+                <input type="email" id="feedbackEmail" placeholder="Your Email" required>
+                <textarea id="feedbackMessage" placeholder="Your feedback..." required></textarea>
+                <button type="submit" class="submit-feedback-btn">Submit Feedback</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script/home.js"></script>
+</body>
+</html>
